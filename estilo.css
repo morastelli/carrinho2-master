@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    left: 0;
+    top: 0;
+    max-width: 360px;
+    max-height: 740px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    height: 85px;
+}
+
+.left-side-menu{
+    display: flex;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: calc(100vh - 85px);
+}
+.left-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 80%;
+}
+h1 {
+  font-size: 20px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.select-image{
+    max-width: 200px;
+}
+.sombra{
+  box-shadow: 1px 1px black;
+}
+.titulo{
+  color: #fff;
+  font-size: 20px;
+}
+.select-image img{
+    width: 80%;
+    border-radius: 10px;
+
+}
+.thumbnails{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 200px;
+    gap: 10px;
+    width: 180px;
+}
+.thumbnail img{
+    width: 80%;
+    border-radius: 10px;
+}
+.right-side{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.right-side h6{
+    color: #1071AD;
+
+}
+.right-side p{
+    color: #093F61;
+    font-size: 14px;
+}
+
+.prices{
+    display: flex;
+    flex-direction: column;
+}
+
+.price{
+    font-size: 16px;
+    font-weight: 700;
+}
+.off{
+    font-size: 12px;
+    color: #ccc;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*Comando do estilo de mais e menos para o carrinho*/
+.amount{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 10px 20px;
+    width: 130px;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+.amount span{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+}
+.minus, .plus{
+    cursor: pointer;
+    width: 30px;
+}
+.button{
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+    background-color: #093F61;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    font-size: 10px;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+}
+.button img{
+    width: 14px;
+}
+
+.seta {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    margin-right: 300px;
+}
+
+.seta img{
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.options img {
+    width: 30px;
+    height: 30px    ;
+}
+
+.con-like {
+    --red: red;
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .con-like .like {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
+  }
+  
+  .con-like .checkmark {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .con-like .outline,
+  .con-like .filled {
+    fill: var(--red);
+    position: absolute;
+  }
+  
+  .con-like .filled {
+    animation: kfr-filled 0.5s;
+    display: none;
+  }
+  
+  .con-like .celebrate {
+    position: absolute;
+    animation: kfr-celebrate 0.5s;
+    animation-fill-mode: forwards;
+    display: none;
+  }
+  
+  .con-like .poly {
+    stroke: var(--red);
+    fill: var(--red);
+  }
+  
+  .con-like .like:checked ~ .checkmark .filled {
+    display: block
+  }
+  
+  .con-like .like:checked ~ .checkmark .celebrate {
+    display: block
+  }
+  
+  @keyframes kfr-filled {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes kfr-celebrate {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      opacity: 0.8;
+    }
+  
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+      display: none;
+    }
+  }

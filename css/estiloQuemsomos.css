@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    cursor: default;
+}
+
+/*Configuração do tamanho da seta*/ 
+.seta{
+    width: 45px;
+    height: 45px;
+}
+
+/*CENTRALIZANDO A LOGO*/
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+/*TAMANHO DA LOGO*/
+.logoTamanho {
+    width: 150px;
+    height: 150px;
+}
+
+/*CENTRALIZANDO O TÍTULO*/
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*AJUSTES DO TÍTULO*/
+.titulo h2 {
+    margin: 0px;
+    font-size: 30px;
+}
+
+/*CENTRALIZANDO O COUNTEUDO PRINCIPAL DA PÁGINA*/
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*AJUSTES DO COUNTEUDO PRINCIPAL DA PÁGINA*/
+main p {
+    font-size: 20px;
+}
