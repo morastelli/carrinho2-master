@@ -9,12 +9,16 @@
         $nome = $linhas["nome"]; 
         $preco = $linhas["preco"]; 
         $qtd = $linhas["quantidade"];
-        $carrinho = $linhas["carrinho"];
+        $carrinho = $linhas["carrinho"];        
     }
+
+    $number = "number";
 
     $comando = $pdo->prepare("SELECT * FROM produtos WHERE nome = :nome");
     $comando->bindParam(":nome", $nome);
     $resultado = $comando->execute();
+
+    $comando->bindParam(":quantidade", $quantidade);
 
 ?>
 <!DOCTYPE html>
@@ -38,8 +42,6 @@
      <div class="titulo">
          <h2>Seu carrinho</h2>
      </div>
-     
-     <!--PRODUTOS-->
      <div id="prot" class="prot">
         <div name="imagem" id="imagem" class="imagem">
         <?php 
@@ -54,19 +56,36 @@
         <div class="resto">
             <div class="texto">
                 <h4 name="nome" id="nome"><?php echo($nome) ?></h4>
-                <h5 name="preco" id="preco">R$<?php echo($preco)?></h5>
+                <h5 class="preco" name="preco" id="preco">R$<?php echo($preco) ?></h5>
             </div>
-            <div class="addremove">
-                <button id="btn_decrementar" name="adicionar" type="button" class="remove">-</button>
-                <p name="quantidade" class="number" id="contador"></p>
-                <button id="btn_incrementar" name="remover" type="button" class="add">+</button>
-            </div>
+            <form action="carrinho.php" method="post" class="addremove">
+                <button id="btn_decrementar" name="remover" type="submit" class="remove">-</button>
+                <?php
+                if(isset($_POST["remover"])){
+                        $comando = $pdo->prepare("UPDATE produtos SET quantidade=(quantidade-1) WHERE nome = :nome)");
+                        $comando->bindParam(":nome", $nome);
+                        $resultado = $comando->execute();
+                    }
+                ?>               
+                <p name="number" class="number" id="contador"></p>
+                <button id="btn_incrementar" name="adicionar" type="submit" class="add">+</button>  
+                <?php
+                if(isset($_POST["adicionar"]))
+                    {
+                        $comando = $pdo->prepare("UPDATE produtos SET quantidade=(quantidade+1) WHERE nome = :nome");
+                        $comando->bindParam(":nome", $nome);
+                        $resultado = $comando->execute();
+                    }
+                ?>
+            </form>
         </div>
-    </Div>
+    </div>
+
+    
      
      <!--BOTÃO FINALIZE SEU PEDIDO-->
     <form action="carrinho.php" class="alinhaBotao" method="post">
-        <a href="carrinho.php"><button name="finalizar" type="submit">Finalize seu pedido</button></a>
+        <button name="finalizar" type="submit">Finalize seu pedido</button>
         <?php
         if(isset($_POST["finalizar"]))
             {
@@ -78,46 +97,16 @@
     </form>
 </body>
 <script>
-const btnIncrementar = document.getElementById("btn_incrementar");
-const btnDecrementar = document.getElementById("btn_decrementar");
-const p$ = document.getElementById("contador");
+    
+contador = <?php echo($quantidade) ?>;
 
-let contador = 1;
-
-p$.innerHTML = contador;
-
-btnIncrementar.addEventListener("click", function()
-{
-  contador++;
-
-  preco = <?php echo $preco; ?>;
-
-  preco = preco * contador;
-
-  console.log(preco);
-
-  p$.innerHTML = contador;
-})
-btnDecrementar.addEventListener("click", function()
-{
-  contador--;
-
-  preco = preco - <?php echo $preco; ?>;
-
-  console.log(preco);
-
-  p$.innerHTML = contador;
-    if (contador <= 0)
+if (contador <= 0)
     {
         if (window.confirm("Deseja remover o item do carrinho?"))
         {
             prot.style.display = "none";
-
         }
     }
-
-})
-
 var carrinho = <?php echo($carrinho)?>
 
 if(carrinho <= 0)
@@ -132,3 +121,5 @@ else
 </script>
 </html>
 
+
+<!-- AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS AMO PIROCAS GROSAS  -->
