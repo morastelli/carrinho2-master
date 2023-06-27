@@ -1,7 +1,6 @@
 <?php
 include ("conecta.php");
 
-
 $foto = ["imagem"];
 
 ?>
@@ -47,7 +46,7 @@ $foto = ["imagem"];
                           <?php
                           if(isset($_POST["update"]))
                           {
-                              $comando = $pdo->prepare("UPDATE produtos SET carrinho = 1 WHERE id_produto = 3");
+                              $comando = $pdo->prepare("UPDATE produtos SET carrinho = 1 WHERE id_produto = 1");
                               $resultado = $comando->execute();
                               ?><script>window.location.replace("carrinho.php");</script><?php
                           }
